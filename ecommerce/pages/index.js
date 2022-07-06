@@ -19,7 +19,7 @@ const Home = ({ products, bannerData }) => {
         ))}
         {console.log(products)}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={bannerData && bannerData[0]} />
     </>
   );
 };
