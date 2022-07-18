@@ -11,10 +11,12 @@ import toast from "react-hot-toast";
 import { useStateContext } from "../context/StateContext";
 
 import { urlFor } from "../lib/client";
+
 const Cart = () => {
   const cartRef = useRef();
   const { totalPrice, totalQuantities, cartItems, setShowCart } =
     useStateContext();
+
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">
@@ -28,7 +30,19 @@ const Cart = () => {
           <span className="cart-num-items">({totalQuantities} items)</span>
         </button>
 
-        {cartItems?.length < 1 && (
+        <div className="product-container">
+          {cartItems.length >= 1 &&
+            cartItems.map((item) => (
+              <div className="product" key={item._id}>
+                <img
+                  src={urlFor(item?.image[0])}
+                  className="cart-product-image"
+                />
+              </div>
+            ))}
+        </div>
+
+        {/* {cartItems.length < 1 && (
           <div className="empty-cart">
             <AiOutlineShopping size={150} />
             <h3>Your shopping bag is empty</h3>
@@ -38,23 +52,11 @@ const Cart = () => {
                 onClick={() => setShowCart(false)}
                 className="btn"
               >
-                Continue shopping
+                Continue Shopping
               </button>
             </Link>
           </div>
-        )}
-
-        <div className="product-container">
-          {cartItems?.length >= 1 &&
-            cartItems?.map((item) => (
-              <div className="product" key={item?._id}>
-                <img
-                  src={urlFor(item?.image[0])}
-                  className="cart-product-image"
-                />
-              </div>
-            ))}
-        </div>
+        )} */}
       </div>
     </div>
   );
