@@ -7,7 +7,7 @@ export const client = SanityClient({
   //dataset to know if we are in production or development
   dataset: "production",
 
-  apiVersion: "2022-06-30",
+  apiVersion: "2022-07-20",
 
   useCdn: true,
 
